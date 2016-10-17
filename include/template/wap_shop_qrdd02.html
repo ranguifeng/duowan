@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=0.5, user-scalable=no;" name="viewport" />
+<title>确认订单</title>
+<link href="style/style.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="/shop/js/jquery-1.8.3.min.js"></script>
+</head>
+
+<body>
+<div class="top">
+	<div class="fh"><img src="images/fh.png"></div>
+    <div class="title">确认订单</div>
+</div>
+<div class="content">
+	<!-- {if $address} -->
+	<div class="tjdz tjdz02">
+		<div><span class="fr">电话：{$address['usad_tel']}
+		</span>收货人：{$address['usad_name']}</div>
+		<div>收货地址：{$address['usad_address']}</div>
+		<div style="clear:both"></div>
+	</div>
+	<!-- {else} -->
+	<div class="tjdz">
+        <div class="dz_img"><img src="images/tjdz.gif"></div>
+        <div class="fz03 color05"><div class="jt_r"><img src="images/jt_r.png"></div>新增收货地址</div>
+        <div style="clear:both"></div>
+    </div>
+	<!-- {/if} -->
+    <div class="dd_01" data-uid="{$good['good_uid']}">
+    	<div class=" con_p lh2_6 fz03">购买清单</div>
+        <div class="dd_sp01">
+        	<div class="ddpic_img"><img src="{$good['good_pic']}"></div>
+            <div>
+            	<div>{$good['good_name']}</div>
+                <div class="fz01 color02 dd_gg02">规格：大份</div>
+                <div><div class="color02 fr">×1</div><div class="fz04 color06">¥{$good['good_price']}</div></div>
+            </div>
+            <div style="clear:both"></div>
+        </div>
+        <!-- <div class="dd_sp01">
+        	<div class="ddpic_img"><img src="images/pic_x.jpg"></div>
+            <div>
+            	<div>汉拿山招牌烤肉</div>
+                <div class="fz01 color02 dd_gg">规格：大份</div>
+                <div><div class="color02 fr">×1</div><div class="fz04 color06">¥26</div></div>
+            </div>
+            <div style="clear:both"></div>
+        </div> -->
+		<div class="lh2_3 con_p fz08 color03"><span>共2件商品</span><span class="color05 fr">￥40</span></div>
+		<div class="lh2_3 con_p fz08 color03"><span>包装费</span><span class="color05 fr">￥1</span></div>
+		<div class="lh2_3 con_p fz08 color03"><span>配送费</span><span class="color05 fr">￥5</span></div>
+        <div class="lh2_3 con_p tar fz08 color03">总计：<span class="fz04 color06">￥{$good['good_price']}</span></div>
+		<div class="mjly con_p lh3"><span class="fl">买家留言：</span><input name="" type="text" class="mjly_btn"></div>
+    </div>
+</div>
+<div class="cz tar qrdd">
+    <a href="javascript:;" class="ljgm fz04">提交订单</a>
+	<div class="fr">总计：<span class="color06 fz04">￥{$good['good_price']}</span></div>
+	<div style="clear:both"></div>
+</div>
+<div class="gw" style="display:none"></div>
+<div class="gw_tc gw_tc02" style="display:none">
+	<form action="" method="get">
+		<div>
+			<div class="color05 fz03 tac fkxq "><div class="con_p"><div class="close mt10"><a href="javascript:;"><img src="images/close.png"></a></div><span class="lh2_6">付款详情</span></div></div>
+			<div class="xxdd_con">
+				<div class="fk_01 color06 con_p">剩19时自动关闭</div>
+				<div class="fk_02 con_p">
+					<div class="color02">付款方式</div>
+					<div class="fz03 color05 lh2_6 b_x"><div class="xz"><img src="images/xz.png"></div>支付宝</div>
+					<div class="fz03 color05 lh2_6">微信</div>
+				</div>
+				<div class="fk_01 con_p color05"><span class="fr fz04">{$good['good_price']}元</span>需付款</div>
+			</div>
+		</div>		
+		<div class="cz fz04 tjdd">
+			<a href="javascript:;" class="ljgm">确认付款</a>
+		</div>
+
+	</form>
+</div>
+</body>
+<script type="text/javascript">
+	$(function(){
+		$('.fh').click(function(){
+			window.history.back(-1);
+		});
+		$('.close').click(function(){
+			$('.gw_tc').hide();
+			$('.gw').hide();
+		});
+		$('.tjdz').click(function(){
+			location.href="address.php?gduid={$gduid}&auid={$auid}";
+		});
+		$('.ljgm').click(function(){
+			<!--{if $address}-->
+			$('.gw').show();
+			$('.gw_tc').show();
+			<!--{else}-->
+			alert('亲,请先添加收获地址~!');
+			<!--{/if}-->
+		});
+
+		
+	})
+</script>
+</html>

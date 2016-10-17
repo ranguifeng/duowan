@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta HTTP-EQUIV="pragma" CONTENT="no-cache">
+    <meta HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+    <meta HTTP-EQUIV="expires" CONTENT="0">
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="apple-touch-fullscreen" content="yes" />
+    <meta name="format-detection" content="telephone=no" />  
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta http-equiv="Expires" content="-1" />
+    <meta http-equiv="pragram" content="no-cache" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+	<title>payment</title>
+	<link rel="stylesheet" href="style/index.css">
+	<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+	<script type="text/javascript">
+	$(function(){
+		$('.close').click(function() {
+			window.close();  
+		});
+		$('.back').click(function(){
+			window.history.back(-1);
+		});
+		$('.payment').click(function(){
+			
+		})
+	});
+	</script>
+</head>
+<body>
+	<div class="head head1">
+		<div class="left1 back">
+			<img src="images/left.png" alt="">
+		</div>
+		<a href="javascript:;" class="back">返回</a>
+		<a href="javascript:;" class="close">关闭</a>
+		订单详情
+	</div>
+	<div class="top1">
+		<img src="images/icon.png" alt="">
+		<p>
+			收货人：{$order['orde_name']}
+			<span>{$order['orde_tel']}</span><br>
+			收货地址：{$order['orde_address']}
+		</p>
+	</div>
+	<div class="content">
+		<div class="content_top1">
+			<p>订单提交成功</p>
+			<p>请在1个小时之内完成支付，超时此订单将自动关闭</p>
+			<p>支付金额：<span>{$order['orde_money']}</span></p>
+		</div>
+		<ul>
+			<li>支付方式<span>微信支付</span></li>
+		</ul>
+	</div>
+	<a href="javascript:;" class="payment">确认支付</a>
+</body>
+</html

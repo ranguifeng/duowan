@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=0.5, user-scalable=no;" name="viewport" />
+<title>商品详情</title>
+<link href="style/style.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="/shop/js/jquery-1.8.3.min.js"></script>
+</head>
+
+<body>
+<div class="top">
+	<div class="logo"><img src="images/logo.png"></div>
+    <!--<div class="title">商品详情</div>-->
+</div>
+<div class="content content02">
+    <div class="nr_con fz03 color05"><div class="jt_r"><img src="images/jt_r.png"></div>我的订单</div>
+    <div class="mt10"><img src="images/banner.jpg"></div>
+    <div class="sp_list">
+        <!-- {loop $goodlist $index $one} -->
+    	<div class="pic_01 pic_mr">
+        	<div><a href="pic_show.php?gduid={$one['good_uid']}"><img src="{$one['good_pic']}"></a></div>
+            <div class="pic_js">
+            	<div class="color02">{$one['good_name']}</div>
+            	<div><span class="fr color01 fz01 fz07">已售3件</span><span class="color06 fl">￥<span class="fz04">{$one['good_price']}</span></span><span class="zk">{$one['good_desc']}</span></div>
+            </div>
+        </div>
+        <!-- {/loop} -->
+        <!-- <div class="pic_01">
+        	<div><img src="images/pic.jpg"></div>
+            <div class="pic_js">
+            	<div class="color02">优品海泰碳烤薯条108g</div>
+            	<div><span class="fr color01 fz01 fz07">已售3件</span><span class="color06 fl">￥<span class="fz04">14.9</span></span><span class="zk">两件8.8折</span></div>
+            </div>
+        </div>
+        <div class="pic_01 pic_mr">
+        	<div><img src="images/pic.jpg"></div>
+            <div class="pic_js">
+            	<div class="color02">优品海泰碳烤薯条108g</div>
+            	<div><span class="fr color01 fz01 fz07">已售3件</span><span class="color06 fl">￥<span class="fz04">14.9</span></span><span class="zk">两件8.8折</span></div>
+            </div>
+        </div>
+        <div class="pic_01">
+        	<div><img src="images/pic.jpg"></div>
+            <div class="pic_js">
+            	<div class="color02">优品海泰碳烤薯条108g</div>
+            	<div><span class="fr color01 fz01 fz07">已售3件</span><span class="color06 fl">￥<span class="fz04">14.9</span></span><span class="zk">两件8.8折</span></div>
+            </div>
+        </div> -->
+        <div style="clear:both"></div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=0.5, user-scalable=no;" name="viewport" />
+<title>商品详情</title>
+<link href="style/style.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="/shop/js/jquery-1.8.3.min.js"></script>
+</head>
+
+<body>
+<div class="top">
+	<div class="fh"><img src="images/fh.png"></div>
+    <div class="title">商品详情</div>
+</div>
+<div class="content">
+    <div class="show_img"><img src="{$good['good_pic']}"></div>
+    <div class="xsxq">
+        <div class="show_name fz04 color05">{$good['good_name']}</div>
+        <div class="color02">月售296份</div>
+        <div class="show_jg">
+            <div class="fz06 color06">¥{$good['good_price']}</div>
+            <div class="tjys">今日特价</div>
+            <div style="clear:both"></div>
+        </div>
+        <div class="fz02 color01 jg">价格：¥{$good['good_price']}</div>
+    </div>
+    <div class="nr_con">
+        <div class="fz03 color05 mb5">商品描述</div>
+        <div class="color02">{$good['good_desc']}</div>
+    </div>
+    <div class="nr_con">
+        <div class="fz03 color05 mb5">评价</div>
+        <div class="pj_01">
+            <div class="tx"><img src="images/tx.gif"></div>
+            <div class="pl_nr">
+                <div class="mb5"><div class="fr color01 fz01">2016/09/08  15:47</div><div class="color05">131****3167</div></div>
+                <div class="color03">口感很好，我很喜欢！</div>
+                <div></div>
+            </div>
+            <div style="clear:both"></div>
+        </div>
+        <div class="pj_01">
+            <div class="tx"><img src="images/tx.gif"></div>
+            <div class="pl_nr">
+                <div class="mb5"><div class="fr color01 fz01">2016/09/08  15:47</div><div class="color05">131****3167</div></div>
+                <div class="color03">口感很好，我很喜欢！</div>
+                <div></div>
+            </div>
+            <div style="clear:both"></div>
+        </div>
+        <div class="pj_01">
+            <div class="tx"><img src="images/tx.gif"></div>
+            <div class="pl_nr">
+                <div class="mb5"><div class="fr color01 fz01">2016/09/08  15:47</div><div class="color05">131****3167</div></div>
+                <div class="color03">口感很好，我很喜欢！</div>
+                <div></div>
+            </div>
+            <div style="clear:both"></div>
+        </div>
+        <div class="pj_01">
+            <div class="tx"><img src="images/tx.gif"></div>
+            <div class="pl_nr">
+                <div class="mb5"><div class="fr color01 fz01">2016/09/08  15:47</div><div class="color05">131****3167</div></div>
+                <div class="color03">口感很好，我很喜欢！</div>
+                <div></div>
+            </div>
+            <div style="clear:both"></div>
+        </div>
+    </div>
+</div>
+<div class="cz fz04">
+	<a href="javascript:;" class="jrgwc">加入购物车</a>
+    <a href="javascript:;" class="ljgm">立即购买</a>
+</div>
+<div class="gw" style="display:none"></div>
+<div class="gw_tc" style="display:none">
+	<form action="qrdd02.php?gduid={$gduid}" method="post">
+		<div class="gw_01 cp_dz">			
+			<div class="con_p">
+				<div class="gw_tcimg"><img src="{$good['good_pic']}"></div>
+				<div class="fl">
+					<div class="show_jg">
+						<div class="fz06 color06">¥{$good['good_price']}</div>
+						<div class="tjys">今日特价</div>
+						<div style="clear:both"></div>
+					</div>
+					<div>月售296份</div>
+					<div>选择规格</div>
+				</div>
+				<div class="close"><a href="javascript:;"><img src="images/close.png"></a></div>
+				<div style="clear:both"></div>
+			</div>
+		</div>
+		<div class="con_p gmsl_mb">
+			<div class="gw_01 color05">
+				<div class="lh1">规格</div>
+				<div class="fz01 ggxz">
+					<a href="javascript:;" class="hover">大份</a>
+					<a href="javascript:;">小份</a>
+					<div style="clear:both"></div>
+				</div>
+			</div>
+			<div class="gw_01 color05">
+				<div class="lh1">口味</div>
+				<div class="fz01 ggxz">
+					<a href="javascript:;" class="hover">微辣</a>
+					<a href="javascript:;">麻辣</a>
+					<div style="clear:both"></div>
+				</div>
+			</div>
+			<div class="gw_01 color05">
+				<div class="gmsl">
+					<div class="jia"><a href="javascript:;"></a></div>
+					<div class="sl"><input name="" type="text" value="1"></div>
+					<div class="jian"><a href="javascript:;" class="qk"></a></div>
+				</div>
+				<div>购买数量</div>
+				<div style="clear:both"></div>
+			</div>
+		</div>
+		<div class="cz fz04 tjdd">
+			<a href="javascript:;" class="ljgm">立即购买</a>
+		</div>
+
+	</form>
+</div>
+</body>
+<script type="text/javascript">
+   $(function(){
+        $('.fh').click(function(){
+            window.history.back(-1);
+        });
+        $('.close').click(function() {
+            $('.gw_tc').hide();
+            $('.gw').hide();
+        });
+		$('.ggxz>a').click(function(){
+			$(this).siblings('a').removeClass('hover');
+			$(this).addClass('hover');
+		})
+        $('.jrgwc').click(function(){
+            $('.gw_tc').show(50);
+            $('.gw').show(50);
+        });
+        $('.ljgm').click(function(){
+            var goodlist=[
+                
+            ]
+            location.href='qrdd02.php?gduid={$gduid}'; 
+        });
+   })
+</script>
+</html>

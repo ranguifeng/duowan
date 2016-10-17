@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=0.5, user-scalable=no;" name="viewport" />
+<title>确认订单数量</title>
+<link href="style/style.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="/shop/js/jquery-1.8.3.min.js"></script>
+</head>
+
+<body>
+<div class="top">
+	<div class="fh"><img src="images/fh.png"></div>
+    <div class="title">确认订单</div>
+</div>
+<div class="content">
+    <!--{if $address}-->
+    <div class="tjdz tjdz02">
+        <div><span class="fr">电话：{$address['usad_tel']}
+        </span>收货人：{$address['usad_name']}</div>
+        <div>收货地址：{$address['usad_address']}</div>
+        <div style="clear:both"></div>
+    </div>
+    <!--{else}-->
+    <div class="tjdz">
+        <div class="dz_img"><img src="images/tjdz.gif"></div>
+        <div class="fz03 color05"><div class="jt_r"><img src="images/jt_r.png"></div>新增收货地址</div>
+        <div style="clear:both"></div>
+    </div>
+    <!--{/if}-->
+    <div class="dd_01" data-uid="{$good['good_uid']}">
+    	<div class=" con_p lh2_6 fz03">购买清单</div>
+        
+        <div class="dd_sp01">
+        	<div class="ddpic_img"><img src="images/pic_x.jpg"></div>
+            <div>
+            	<div>{$good['good_name']}</div>
+                <div class="fz01 color02 dd_gg02">规格：大份</div>
+                <div><div class="color02 fr">×1</div><div class="fz04 color06">¥{$good['good_price']}</div></div>
+            </div>
+            <div style="clear:both"></div>
+        </div>
+        
+        <div class="dd_sp01">
+        	<div class="ddpic_img"><img src="images/pic_x.jpg"></div>
+            <div>
+            	<div>汉拿山招牌烤肉</div>
+                <div class="fz01 color02 dd_gg">规格：大份</div>
+                <div><div class="color02 fr">×1</div><div class="fz04 color06">¥26</div></div>
+            </div>
+            <div style="clear:both"></div>
+        </div>
+		<div class="lh2_3 con_p fz08 color03"><span>共2件商品</span><span class="color05 fr">￥40</span></div>
+		<div class="lh2_3 con_p fz08 color03"><span>包装费</span><span class="color05 fr">￥1</span></div>
+		<div class="lh2_3 con_p fz08 color03"><span>配送费</span><span class="color05 fr">￥5</span></div>
+        <div class="lh2_3 con_p tar fz08 color03">总计：<span class="fz04 color06">￥46</span></div>
+		<div class="mjly con_p lh3"><span class="fl">买家留言：</span><input name="" type="text" class="mjly_btn"></div>
+    </div>
+</div>
+<div class="cz tar qrdd">
+    <a href="javascript:;" class="ljgm fz04">提交订单</a>
+	<div class="fr">总计：<span class="color06 fz04">￥66</span></div>
+	<div style="clear:both"></div>
+</div>
+</body>
+<script type="text/javascript">
+    $(function(){
+        $('.fh').click(function(){
+            window.history.back(-1);
+        })
+        $('.tjdz').click(function(){
+            location.href="address.php?gduid={$gduid}";
+        });
+        $('.ljgm').click(function(){
+            <!--{if $address}-->
+            var goodlist=[
+                {
+                    'uid':$('.dd_01').data('uid'),
+                    'count':1
+                }
+            ]
+            $.post('index.php',{'goodlist':goodlist,'auid':"{$auid}"},function(data){
+                location.href='qrdd02.php';
+            },'json')
+            
+            <!--{else}-->
+            alert('请先添加收获地址');
+            <!--{/if}-->
+        });
+    })
+</script>
+</html>

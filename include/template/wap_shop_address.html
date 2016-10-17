@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta HTTP-EQUIV="pragma" CONTENT="no-cache">
+    <meta HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+    <meta HTTP-EQUIV="expires" CONTENT="0">
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="apple-touch-fullscreen" content="yes" />
+    <meta name="format-detection" content="telephone=no" />  
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta http-equiv="Expires" content="-1" />
+    <meta http-equiv="pragram" content="no-cache" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+	<title>收货地址</title>
+	<link rel="stylesheet" href="style/index.css">
+	<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+	<script type="text/javascript">
+	$(function(){
+		$('.close').click(function() {
+			window.close();  
+		});
+		$('.back').click(function(){
+			window.history.back(-1);
+		});
+	});
+	</script>
+</head>
+<body>
+	<div class="head head1"> 
+		<div class="left1 back">
+			<img src="images/left.png" alt="">
+		</div>
+		<a href="javascript:;" class="back">返回</a>
+		<a href="javascript:;" class="close">关闭</a>
+		选择收货地址
+	</div>
+    <!--{loop $address $i $e}-->
+    <a href="qrdd02.php?gduid={$gduid}&auid={$e['usad_uid']}">
+        <div class="top1">
+            <img src="images/icon.png" alt="">
+            <p>
+                收货人：{$e['usad_name']}
+                <span>{$e['usad_tel']}</span><br>
+                收货地址：{$e['usad_address']}
+            </p>
+        </div>
+    </a>
+    <!--{/loop}-->
+	<div class="top">
+		<a href="new_address.php?gduid={$gduid}">+新增收货地址</a>
+	</div>
+</body>
+</html

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta HTTP-EQUIV="pragma" CONTENT="no-cache">
+    <meta HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+    <meta HTTP-EQUIV="expires" CONTENT="0">
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="apple-touch-fullscreen" content="yes" />
+    <meta name="format-detection" content="telephone=no" />  
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta http-equiv="Expires" content="-1" />
+    <meta http-equiv="pragram" content="no-cache" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+	<title>address</title>
+	<link rel="stylesheet" href="style/index.css">
+	<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+	<script type="text/javascript">
+	$(function(){
+		$('.obtn').click(function() {
+			var Name = $('.name').val();
+			var Phone = $('.phone').val();
+			var Address = $('.address').val();
+			if (Name == ''|| Phone == '' || Address == '') {
+				alert('地址信息不能为空');
+			}else{
+				$('#user_form').submit();
+			}
+		});
+		$('.left').click(function() {
+			window.history.back(-1);
+		});
+	});
+	</script>
+</head>
+<body>
+	<div class="head">
+		<div class="left"><img src="images/left.png" alt=""></div>
+		添加新地址
+		<a href="javascript:;" class="obtn">保存</a>
+	</div>
+    <form method="post" action="new_address.php?gduid={$gduid}" id='user_form' name="editform" enctype="multipart/form-data">
+        <input type="text" placeholder="收货人" maxlength="6" class="name" name="usad_name">
+        <input type="text" placeholder="联系手机" maxlength="11" class="phone" name="usad_tel">
+        <textarea placeholder="详细地址" class="address" name="usad_address"></textarea>	
+    </form>
+</body>
+</html

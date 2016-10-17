@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta HTTP-EQUIV="pragma" CONTENT="no-cache">
+    <meta HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+    <meta HTTP-EQUIV="expires" CONTENT="0">
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="apple-touch-fullscreen" content="yes" />
+    <meta name="format-detection" content="telephone=no" />  
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta http-equiv="Expires" content="-1" />
+    <meta http-equiv="pragram" content="no-cache" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+	<title>确认订单</title>
+	<link rel="stylesheet" href="style/index.css">
+	<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+	<script type="text/javascript">
+	$(function(){
+		$('.close').click(function() {
+			window.close();  
+		});
+		$('.back').click(function(){
+			window.history.back(-1);
+		});
+		$('.submit').click(function(){
+			<!--{if $address}-->
+			var goodlist=[
+				{
+					'uid':$('.goodinfo').data('uid'),
+					'count':1
+				}
+			]
+			$.post('index.php',{'goodlist':goodlist,'auid':"{$auid}"},function(data){				
+				if(data.data.data.status == 'ok'){
+					location.href='payment.php?oduid='+data.data.data.uid;
+				}
+
+			},'json')
+			<!--{else}-->
+			alert('请先添加收货地址');			
+			<!--{/if}-->
+		})
+	});
+	</script>
+</head>
+<body>
+	<div class="head head1"> 
+		<div class="left1 back">
+			<img src="images/left.png" alt="">
+		</div>
+		<a href="javascript:;" class="back">返回</a>
+		<a href="javascript:;" class="close">关闭</a>
+		订单详情
+	</div>
+    <!--{if $address}-->
+    <div class="top1">
+        <a href="address.php"><img src="images/icon.png" alt=""></a>
+        <p>
+            收货人：{$address['usad_name']}
+            <span>{$address['usad_tel']}</span><br>
+            收货地址：{$address['usad_address']}
+        </p>
+	</div>
+    <!--{else}-->
+    <div class="top">
+        <a href="address.php?oduid={$oduid}">+添加收货地址</a>
+    </div>
+    <!--{/if}-->
+	<div class="content goodinfo" data-uid="{$good['good_uid']}">
+		<div class="content_top">
+			<img src="{$good['good_pic']}" alt="">
+			<p>{$good['good_name']}</p>
+			<p>{$good['good_desc']}</p>
+			<p>¥{$good['good_price']}<span>x1</span></p>
+		</div>
+		<ul>
+			<li>运费<span>免运费</span></li>
+			<li>合计：<span>¥{$good['good_price']}</span></li>
+		</ul>
+	</div>
+	<div class="bottom">
+		合计：
+		<span>¥{$good['good_price']}</span>
+		<a href="javascript:;" class="submit">提交订单</a>
+	</div>
+</body>
+</html
